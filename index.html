@@ -1,156 +1,123 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Welcome to OpenShift</title>
-  <style>
-  html { 
-  background: black; 
-  }
-  body {
-    background: #333;
-    background: -webkit-linear-gradient(top, black, #666);
-    background: -o-linear-gradient(top, black, #666);
-    background: -moz-linear-gradient(top, black, #666);
-    background: linear-gradient(top, black, #666);
-    color: white;
-    font-family: "Helvetica Neue",Helvetica,"Liberation Sans",Arial,sans-serif;
-    width: 40em;
-    margin: 0 auto;
-    padding: 3em;
-  }
-  a {
-    color: white;
-  }
-
-  h1 {
-    text-transform: capitalize;
-    -moz-text-shadow: -1px -1px 0 black;
-    -webkit-text-shadow: 2px 2px 2px black;
-    text-shadow: -1px -1px 0 black;
-    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
-    background: #CC0000;
-    width: 22.5em;
-    margin: 1em -2em;
-    padding: .3em 0 .3em 1.5em;
-    position: relative;
-  }
-  h1:before {
-    content: '';
-    width: 0;
-    height: 0;
-    border: .5em solid #91010B;
-    border-left-color: transparent;
-    border-bottom-color: transparent;
-    position: absolute;
-    bottom: -1em;
-    left: 0;
-    z-index: -1000;
-  }
-  h1:after {
-    content: '';
-    width: 0;
-    height: 0;
-    border: .5em solid #91010B;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    position: absolute;
-    bottom: -1em;
-    right: 0;
-    z-index: -1000;
-  }
-  h2 { 
-    margin: 2em 0 .5em;
-    border-bottom: 1px solid #999;
-  }
-
-  pre {
-    background: black;
-    padding: 1em 0 0;
-    -webkit-border-radius: 1em;
-    -moz-border-radius: 1em;
-    border-radius: 1em;
-    color: #9cf;
-  }
-
-  ul { 
-    margin: 0; 
-    padding: 0;
-  }
-  li {
-    list-style-type: none;
-    padding: .5em 0;
-  }
-
-  .brand {
-    display: block;
-    text-decoration: none;
-  }
-  .brand .brand-image {
-    float: left;
-    border: none;
-  }
-  .brand .brand-text {
-    float: left;
-    font-size: 24px;
-    line-height: 24px;
-    padding: 4px 0;
-    color: white;
-    text-transform: uppercase;
-  }
-  .brand:hover,
-  .brand:active {
-    text-decoration: underline;
-  }
-
-  .brand:before,
-  .brand:after {
-    content: ' ';
-    display: table;
-  }
-  .brand:after {
-    clear: both;
-  }
-  </style>
-</head>
-<body>
-  <a href="http://openshift.com" class="brand">
-    <img class="brand-image"
-      alt="OpenShift logo"
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAAAAXNSR0IArs4c6QAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAARHgAAER4B27UUrQAABUhJREFUWMPFWFlsVGUU/s5/70zbaSltA7RQpJ2lC9CFkQkWIgSJxkAhRA0JCYFq4hPG6JsoGKNCtPigxqhvGlPAuGIaE4igNaElbIW2yNL2tkOtTYGWCqWF2e79fCh7p1Bmpnge/3vuOef7z/nPJiTxMHS6pMRuu6YqFNTTAJYSyAU4GZB0AH2AGCANAfc5Qrba6T3HrmECScYLwCioSIcV2AjidQDZ45Q/LJRaWrLV03X89P8GwHB5XwG4DcDkGPWEBKimNrzN094efGQAzjm9GWHFr4R4LiHKgFaSL3r8zYcmHEBbkW+KFo7UEyhKsNeHlMgyV8eJo4kQpqId9ub6HCoc+XWcxl8lcBTATwDax8GfZtHa054/f/bNg8ZcnyOhHjBc834E8MJ9/vML8aYZQX1hd1PP3WFXkhMRfYkIlpOoGomc0WRRTnch+XAQWG2KTNJNLbuy68C/cQMwXOWrAKkdgz8A8kMdg9X5fn/gQcI7POXLaMk3AGbe/P8SbF0D1KcGRGXpIJJpIQkWBHhnsf/Ie3GF0DmnMxmQT8bg7RellXr8ze+Ox3gAcBvNf+iUUhH5FODLSvScAerDGpiVxTAyGUYKzICA34nCwbhDyHB7N4L8PAofhVzh9jfvjffR/ZZTnupIsR8G0C9EjW7Tfnii/dBgrPL0u83kmjHy33Z3Z/zG97uKi7xpWA8GHZpE1mcZRne8MvXblfbxqQAWR+Fp+mdW5hZPjAqu5JVlhrTwOgrXi2ABbjjchF4FYGvi0qhprgagjYod4OeldXWRWBUEtdBjEH4mwIJ7vF2V4Dqgot0+NEFdPAqmdZ5tAXA8Slx6LrpKsxMHQJge5ft1v0oe2OOu+PZ39+LCOFqImqiXo8JzAeBkXlnmnoKK9LgACJl2R9gELsHW1saUwKCpnbIoa8UMTokVgGXJmSjHkfNWUlWDy9d6USVdyoiEF8b1iElxQKHuPG1D/bCtVEBhCiykMQQFgCK2mN2sSx+tkdcbhGq7wKSkK9RnmsCG2xVSLsflAR1S6eloWhawtF8yGJGskSJDBdQR8pIjZMXcfFmm1gOg2lRaSRdT1AD1PBPQbCAyxcRMifCpc41HEtILNbh9s8SSvYTUmBp2LDGOdCOB1OD0XbeByWliwY5bugc9nU2T4wqhCx7PNAV9bSGwARp3TzVaP0j09GQUzJubLUgefY3SEHMh63MVr4FIlYL+7C1AlCwAmxM+/plYy6hhgN2xp1HBawAr72krnH3uoicTaXyHx7uIwKZoT0QhUhszAAI7x7ivL0a60/jp77yyTFrWt6N6rxE99c7OkxdiBhC2y/cAorXHpama/aNG8dkOO32b6p3zTzXmeysfPu4LkkKafA3IrGjfCfPtuGfiPlfx+xBsuWtwpa3zIuy2YaoZ5o0eSQc5TVnb53aeeAuk9eBtRvkqUH0MoTsqA7nL429eFzeA3lyfQ08eaiNgCrjTYNozQ1S+WyUfQCosTLqZ+oiDUNwhggPujpZTuCMXGwUV6cJgKYnNIJffR3df2NLLZ5871puQrUR//pzpU7rOnAfJP53eDELrsoPpk4RIGRn5xqIBAAdBOCAoBjBjPJsJUdZSt9HSOGFrld5cn2M4KbwfkIUJzqYhQlYWdJ7YN2FrFQCY3nPsmk61AuSuRNYyUdaiRBk/7tViR37Zcir1JYC8WNshgjWWPfhq0dmzVx/5bhQAWnLKU1Md8gZHOsjxAgmD2GEKq4s6m1sxASQPu16HiBh53goqPg9ac0TEcwNQEOBlQAZEcMgC94dDZt2c7r8GMIH0H43ZRDC51RVCAAAAAElFTkSuQmCC">
-    <div class="brand-text"><strong>Open</strong>Shift</div>
-  </a>
-  <h1>
-    Welcome to hienchu's backyard @ OpenShift
-  </h1>
-  <p>
-    Place your application here
-  </p>
-  <p>
-    In order to commit to your new project, go to your projects git repo (created with the rhc app create command).  Make your changes, then run:
-  </p>
-  <pre>
-    git commit -a -m 'Some commit message'
-    git push
-  </pre>
-  <p>
-    Then reload this page.
-  </p>
-  
-  <h2>
-    What's next?
-  </h2>
-  <ul>
-    <li>
-      Why not visit us at <a href="http://openshift.redhat.com">http://openshift.redhat.com</a>, or
-    </li>
-    <li>
-      You could get help in the <a href="http://www.redhat.com/openshift">OpenShift forums</a>, or
-    </li>
-    <li>
-      You're welcome to come chat with us in our IRC channel at #openshift on freenode.net
-    </li>
-  </ul>
-</body>
+<html>
+    <header></header>
+    <body>
+        <canvas id="example" width="300" height="300">The &lt;canvas&gt; element is not supported by your browser!</canvas>
+        <script type="application/x-javascript">
+            draw();           
+            function draw() {
+              var canvas = document.getElementById('example');
+              if (canvas.getContext) {
+                var c2d=canvas.getContext('2d');
+                c2d.clearRect(0,0,300,300);
+                //Define gradients for 3D / shadow effect
+                var grad1=c2d.createLinearGradient(0,0,300,300);
+                grad1.addColorStop(0,"#D83040");
+                grad1.addColorStop(1,"#801020");
+                var grad2=c2d.createLinearGradient(0,0,300,300);
+                grad2.addColorStop(0,"#801020");
+                grad2.addColorStop(1,"#D83040");
+                c2d.font="Bold 20px Arial";
+                c2d.textBaseline="middle";
+                c2d.textAlign="center";
+                c2d.lineWidth=1;
+                c2d.save();
+                //Outer bezel
+                c2d.strokeStyle=grad1;
+                c2d.lineWidth=10;
+                c2d.beginPath();
+                c2d.arc(150,150,138,0,Math.PI*2,true);
+                c2d.shadowOffsetX=4;
+                c2d.shadowOffsetY=4;
+                c2d.shadowColor="rgba(0,0,0,0.6)";
+                c2d.shadowBlur=6;
+                c2d.stroke();
+                //Inner bezel
+                c2d.restore();
+                c2d.strokeStyle=grad2;
+                c2d.lineWidth=10;
+                c2d.beginPath();
+                c2d.arc(150,150,129,0,Math.PI*2,true);
+                c2d.stroke();
+                c2d.strokeStyle="#222";
+                c2d.save();
+                c2d.translate(150,150);
+                //Markings/Numerals
+                for (i=1;i<=60;i++) {
+                  ang=Math.PI/30*i;
+                  sang=Math.sin(ang);
+                  cang=Math.cos(ang);
+                  //If modulus of divide by 5 is zero then draw an hour marker/numeral
+                  if (i % 5 == 0) {
+                    c2d.lineWidth=8;
+                    sx=sang*95;
+                    sy=cang*-95;
+                    ex=sang*120;
+                    ey=cang*-120;
+                    nx=sang*80;
+                    ny=cang*-80;
+                    c2d.fillText(i/5,nx,ny);
+                  //Else this is a minute marker
+                  } else {
+                    c2d.lineWidth=2;
+                    sx=sang*110;
+                    sy=cang*110;
+                    ex=sang*120;
+                    ey=cang*120;
+                  }
+                  c2d.beginPath();
+                  c2d.moveTo(sx,sy);
+                  c2d.lineTo(ex,ey);
+                  c2d.stroke();
+                }
+                //Fetch the current time
+                var ampm="AM";
+                var now=new Date();
+                var hrs=now.getHours();
+                var min=now.getMinutes();
+                var sec=now.getSeconds();
+                c2d.strokeStyle="#000";
+                //Draw AM/PM indicator
+                if (hrs>=12) ampm="PM";
+                c2d.lineWidth=1;
+                c2d.strokeRect(21,-14,44,27);
+                c2d.fillText(ampm,43,0);
+                
+                c2d.lineWidth=6;
+                c2d.save();
+                //Draw clock pointers but this time rotate the canvas rather than
+                //calculate x/y start/end positions.
+                //
+                //Draw hour hand
+                c2d.rotate(Math.PI/6*(hrs+(min/60)+(sec/3600)));
+                c2d.beginPath();
+                c2d.moveTo(0,10);
+                c2d.lineTo(0,-60);
+                c2d.stroke();
+                c2d.restore();
+                c2d.save();
+                //Draw minute hand
+                c2d.rotate(Math.PI/30*(min+(sec/60)));
+                c2d.beginPath();
+                c2d.moveTo(0,20);
+                c2d.lineTo(0,-110);
+                c2d.stroke();
+                c2d.restore();
+                c2d.save();
+                //Draw second hand
+                c2d.rotate(Math.PI/30*sec);
+                c2d.strokeStyle="#E33";
+                c2d.beginPath();
+                c2d.moveTo(0,20);
+                c2d.lineTo(0,-110);
+                c2d.stroke();
+                c2d.restore();
+                
+                //Additional restore to go back to state before translate
+                //Alternative would be to simply reverse the original translate
+                c2d.restore();
+                setTimeout(draw,1000);
+              }
+            }
+        </script>
+    </body>
 </html>
