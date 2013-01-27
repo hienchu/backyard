@@ -1,4 +1,7 @@
 #!/bin/env node
+
+// Hello, this is to test git branch :)
+
 //  OpenShift sample Node application
 var express = require('express');
 var fs      = require('fs');
