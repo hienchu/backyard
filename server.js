@@ -112,6 +112,14 @@ var SampleApp = function() {
             res.setHeader('Content-Type', 'text/html');
             res.send(self.cache_get('index.html') );
         };
+        
+        self.routes['/update'] = function(req, res){
+            var sys = require('sys');
+            var exec = require('child_process').exec;
+            function puts(error, stdout, stderr) { sys.puts(stdout) }
+            exec("git status -s", puts);
+            res.send('OK');
+        };
     };
 
 
@@ -121,7 +129,9 @@ var SampleApp = function() {
      */
     self.initializeServer = function() {
         self.createRoutes();
-        self.app = express.createServer();
+        //method createServer is deprecated
+        //self.app = express.createServer();
+        self.app = express();
 
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
